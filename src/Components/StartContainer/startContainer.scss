@@ -1,0 +1,271 @@
+@import "../../globalStyle.scss";
+
+.start-container {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+    height: 980px;
+
+    .split-screen {
+        position: absolute;
+        content: '';
+        background: $main_color_gradient;
+        background: linear-gradient(157deg, $main_color_gradient 0%, $main_color 56%);
+        width: 3000px;
+        height: 2450px;
+        transform: rotate(-8deg);
+        top: -2000px;
+        left: -200px;
+        box-shadow: 0px 0px 18px 2px #000;
+    }  
+
+    .widget {
+        position: relative;
+        top: 0;
+        width: 950px;
+        height: 350px;
+        margin-top: 130px;
+        display: flex;
+        animation: left-to-right 1.1s ease;
+        margin-left: 70px;
+
+        img {
+            width: 306px;
+            height: 306px;
+        }
+
+        p.description {
+            margin-top: 65px;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 1.75rem;
+            text-align: justify;
+        }
+
+        button {
+            position: absolute;
+            width: 120px;
+            height: 45px;
+            outline: none;
+            border: none;
+            background-color: #fff;
+            color: $bg_color;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 3px;
+            bottom: 40px;
+            left: 34.5%;
+            cursor: pointer;
+            box-shadow: 0px 0px 7px 2px rgba(113, 128, 147, 0.65);
+            transition: all 0.4s ease;
+
+            &:hover {
+                box-shadow: 0px 0px 7px 6px rgba(113, 128, 147, 0.65);
+                transform: scale(1.04);
+            }
+        }
+    }
+
+    .widget.right {
+        position: absolute;
+        margin-left: 0;
+        right: 70px;
+        top: 500px;
+        margin-top: 90px;
+        flex-direction: row-reverse;
+        animation: right-to-left 1.1s ease;
+
+        p.description {
+            text-align: justify;
+            width: 100%;
+            margin-top: 65px;
+            margin-right: 20px;
+        }
+
+        button {
+            left: 50%;
+            bottom: 75px;
+        }
+    }
+
+    @media screen and (max-width: 1070px) {
+        .widget {
+            transform: scale(0.8);
+            margin-left: -70px;
+            animation: none !important;
+        }
+
+        .widget.right {
+            right: -70px;
+        }
+    }
+
+    @media screen and (max-width: 795px) {
+        .split-screen {
+            top: -2050px;
+        }
+
+        .widget {
+            transform: scale(0.6);
+            margin-left: -140px;
+        }
+
+        .widget.right {
+            right: -140px;
+        }
+    }
+
+    @media screen and (max-width: 650px) { 
+        height: 830px;
+
+        .split-screen {
+            top: -1850px;
+        }
+        
+        .widget {
+            transform: scale(1);
+            margin-left: 15px;
+            top: 0px;
+            
+            img {
+                width: 128px;
+                height: 128px;
+            }
+
+            p.description {
+                margin-top: 23px;
+                width: 400px;
+                font-size: 1.30rem;
+            }
+
+            button {
+                bottom: 142px;
+                left: 150px;
+            }
+        }
+
+        .widget.right {
+            left: 15px;
+            flex-direction: row;
+            top: 320px;
+
+            p.description { 
+                margin-top: 23px;
+                width: 400px;
+            }
+
+            button {
+                bottom: 142px;
+                left: 150px;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 568px) {
+        .widget {
+            p.description {
+                width: 250px;
+                font-size: 1.2rem
+            }
+
+            button {
+                bottom: 80px;
+            }
+        }
+
+        .widget.right {
+            p.description {
+                width: 250px;
+                font-size: 1.2rem
+            }
+            
+            button {
+                bottom: 80px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .widget {
+            img {
+                width: 64px;
+                height: 64px;
+            }
+
+            p.description {
+                position: relative;
+                left: -85px;
+                top: 38px;
+                width: 320px;
+                font-size: 1.1rem;
+            }
+
+            button {
+                left: 0;
+                bottom: 90px;
+            }
+        }
+
+        .widget.right { 
+            p.description {
+                position: relative;
+                top: 42px;
+                width: 320px;
+                font-size: 1.1rem;
+            }
+
+            button {
+                left: 0;
+                bottom: 90px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 340px) {
+        .widget {
+            p.description {
+                font-size: 0.92rem;
+                width: 290px;
+            }
+
+            button {
+                width: 100px;
+                height: 30px;
+                font-size: 0.9rem;
+                bottom: 155px;
+            }
+        }
+
+        .widget.right {
+            p.description {
+                font-size: 0.92rem;
+                width: 290px;
+            }
+
+            button {
+                bottom: 155px;
+            }
+        }
+    }
+}
+
+/* I didn't use external library for animation like that, because right side element were bugged  */
+@keyframes left-to-right {
+    0% {
+        margin-left: -1000px;      
+    }
+
+    100% {
+        margin-left: 70px;      
+    }
+}
+
+@keyframes right-to-left {
+    0% {
+        right: -1000px;  
+    }
+
+    100% {
+        right: 70px;   
+    }
+}
